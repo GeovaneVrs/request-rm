@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request Aqua</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="notification">
+        <img
+          class="notification-icon"
+          src="img/sino.svg"
+          alt="Alternative description"
+        />
+        <h2>Notificação</h2>
+      </div>
+      <div class="container2">
+        <h2>Y</h2>
+      </div>
+      <div class="container3">
+        <h2>U</h2>
+      </div>
+      <div class="container4">
+        <h2>Aceitar</h2>
+      </div>
+      <div class="container5">
+        <h2>Negar</h2>
+      </div>
+      <h1 class="message" id="message"></h1>
+    </div>
+    <script>
+      const bodyElement = document.querySelector("body");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        bodyElement.classList.add("invisible");
+      });
+
+      window.addEventListener("message", function (event) {
+        const classElement = document.querySelector(".message");
+        bodyElement.classList.add("visible");
+
+        if (event.data.message) {
+          classElement.innerHTML += event.data.message;
+        }
+
+           if (event.data.variavel === "Y") {
+            handlerClose();
+            setTimeout(() => {classElement.innerHTML = ""},1000)
+          } else if (event.data.variavel === "U") {
+            handlerClose();
+            setTimeout(() => {classElement.innerHTML = ""},1000)
+          }
+      });
+
+      function handlerClose() {
+        bodyElement.classList.remove("visible");
+        bodyElement.classList.add("invisible");
+      }
+
+      function handlerOpen() {
+        bodyElement.classList.add("visible");
+      }
+    </script>
+  </body>
+</html>
